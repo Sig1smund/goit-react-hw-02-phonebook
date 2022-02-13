@@ -28,13 +28,13 @@ class App extends Component {
     this.setState({filter: e.currentTarget.value})
   }
 
-  filteredItems = () => {
-    const { filter, contacts } = this.state;
-    const loweredFilter = filter.toLowerCase();
+  // filteredItems = () => {
+  //   const { filter, contacts } = this.state;
+  //   const loweredFilter = filter.toLowerCase();
     
-    return contacts.filter(elem => elem.name.toLowerCase().includes(loweredFilter));
+  //   return contacts.filter(elem => elem.name.toLowerCase().includes(loweredFilter));
 
-  }
+  // }
 
   render() {
 

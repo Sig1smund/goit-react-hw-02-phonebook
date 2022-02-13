@@ -11,7 +11,7 @@ export default function ContactList({ contacts, container, erase }) {
               <li key={nanoid()} className={s.contacts__item}>
                 {elem.name}: {elem.number}
                 <button type="button" onClick={() => erase(elem.name)}>
-                  Удалить
+                  Delete
                 </button>
               </li>
             );
@@ -23,7 +23,7 @@ export default function ContactList({ contacts, container, erase }) {
                 <li key={nanoid()} className={s.contacts__item}>
                   {elem.name}: {elem.number}
                   <button type="button" onClick={() => erase(elem)}>
-                    Удалить
+                    Delete
                   </button>
                 </li>
               );
