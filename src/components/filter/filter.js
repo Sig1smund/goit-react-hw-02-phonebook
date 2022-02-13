@@ -1,4 +1,5 @@
 import s from './filter.module.css';
+import propTypes from 'prop-types';
 
 export default function Filter({ options, eventHandler }) {
   return (
@@ -17,3 +18,8 @@ export default function Filter({ options, eventHandler }) {
     </label>
   );
 }
+
+Filter.propTypes = {
+  eventHandler: propTypes.func,
+  options: propTypes.string,
+};

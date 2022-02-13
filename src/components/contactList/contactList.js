@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import propTypes from 'prop-types';
 import s from './contactList.module.css';
 
 export default function ContactList({ contacts, container, erase }) {
@@ -32,3 +33,9 @@ export default function ContactList({ contacts, container, erase }) {
   );
   return list;
 }
+
+ContactList.propTypes = {
+  contacts: propTypes.array,
+  container: propTypes.string,
+  erase: propTypes.func,
+};

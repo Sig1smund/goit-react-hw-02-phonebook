@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import s from './contactForm.module.css';
 
 class ContactForm extends Component {
@@ -58,3 +59,7 @@ class ContactForm extends Component {
 }
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  data: propTypes.object,
+};
