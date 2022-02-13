@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {isEqual} from 'lodash'
-import { nanoid } from 'nanoid';
 import ContactForm from "./contactForm";
 import Filter from "./filter";
 import ContactList from "./contactList";
@@ -33,8 +32,6 @@ class App extends Component {
   }
 
   render() {
-    const { filter, contacts } = this.state;
-    const eventChange = this.handleChange;
 
     return (
       <div>
