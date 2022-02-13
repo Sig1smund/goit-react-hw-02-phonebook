@@ -1,4 +1,3 @@
-import s from './contactList.module.css';
 import { nanoid } from 'nanoid';
 
 export default function ContactList({ contacts, container }) {
