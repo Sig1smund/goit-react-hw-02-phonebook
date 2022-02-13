@@ -1,8 +1,11 @@
+import s from './filter.module.css';
+
 export default function Filter({ options, eventHandler }) {
   return (
-    <label>
+    <label className={s.filter__label}>
       Find contacts by name
       <input
+        className={s.filter__form}
         type="text"
         name="filter"
         value={options}

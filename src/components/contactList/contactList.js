@@ -1,14 +1,18 @@
 import { nanoid } from 'nanoid';
+import s from './contactList.module.css';
 
-export default function ContactList({ contacts, container }) {
+export default function ContactList({ contacts, container, erase }) {
   const loweredFilter = container.toLowerCase();
   const list = (
     <ul>
       {!container
         ? contacts.map(elem => {
             return (
-              <li key={nanoid()}>
+              <li key={nanoid()} className={s.contacts__item}>
                 {elem.name}: {elem.number}
+                <button type="button" onClick={() => erase(elem.name)}>
+                  Удалить
+                </button>
               </li>
             );
           })
@@ -16,8 +20,11 @@ export default function ContactList({ contacts, container }) {
             .filter(elem => elem.name.toLowerCase().includes(loweredFilter))
             .map(elem => {
               return (
-                <li key={nanoid()}>
+                <li key={nanoid()} className={s.contacts__item}>
                   {elem.name}: {elem.number}
+                  <button type="button" onClick={() => erase(elem)}>
+                    Удалить
+                  </button>
                 </li>
               );
             })}

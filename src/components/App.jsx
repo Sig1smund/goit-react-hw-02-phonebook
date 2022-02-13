@@ -3,6 +3,7 @@ import {isEqual} from 'lodash'
 import ContactForm from "./contactForm";
 import Filter from "./filter";
 import ContactList from "./contactList";
+import s from './contactForm/contactForm.module.css'
 
 class App extends Component {
   state = {
@@ -10,10 +11,14 @@ class App extends Component {
     filter: '',
   }
 
+  eraseContact = (elem) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.name !== elem),
+    }));
+  }
+
   accumulateContacts = data => {
-    console.log(data)
     const test = this.state.contacts.some((user) => isEqual(data, user));
-    console.log(test)
     !test ? this.setState(prevState => ({
       contacts: [data, ...prevState.contacts],
     })) : window.alert(`${data.name} is already in contacts!` )
@@ -34,12 +39,12 @@ class App extends Component {
   render() {
 
     return (
-      <div>
+      <div className={s.container}>
         <h2>Phonebook</h2>
         <ContactForm data={this.accumulateContacts} />
         <h2>Contacts</h2>
         <Filter eventHandler={this.handleFilteredItems} options={this.state.filter}/>
-        <ContactList container={this.state.filter} contacts={this.state.contacts}/>  
+        <ContactList container={this.state.filter} contacts={this.state.contacts} erase={this.eraseContact}/>  
       </div>
     )
   }
