@@ -4,6 +4,7 @@ export default function Filter({ options, eventHandler }) {
   return (
     <label className={s.filter__label}>
       Find contacts by name
+      <br />
       <input
         className={s.filter__form}
         type="text"

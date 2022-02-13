@@ -4,7 +4,7 @@ import s from './contactList.module.css';
 export default function ContactList({ contacts, container, erase }) {
   const loweredFilter = container.toLowerCase();
   const list = (
-    <ul>
+    <ul className={s.list__block}>
       {!container
         ? contacts.map(elem => {
             return (

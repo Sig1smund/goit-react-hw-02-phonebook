@@ -23,6 +23,7 @@ class ContactForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label className={s.contacts__label}>
           Name
+          <br />
           <input
             className={s.input}
             type="text"
@@ -34,8 +35,10 @@ class ContactForm extends Component {
             required
           />
         </label>
+        <br />
         <label className={s.contacts__label}>
           Number
+          <br />
           <input
             className={s.input}
             type="tel"
@@ -47,6 +50,7 @@ class ContactForm extends Component {
             required
           />
         </label>
+        <br />
         <button type="submit">Add contact</button>
       </form>
     );
