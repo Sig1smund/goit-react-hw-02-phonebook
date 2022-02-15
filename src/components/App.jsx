@@ -3,6 +3,7 @@ import {isEqual} from 'lodash'
 import ContactForm from "./contactForm";
 import Filter from "./filter";
 import ContactList from "./contactList";
+import ContactsItem from "./contactItem";
 import s from './contactForm/contactForm.module.css'
 
 class App extends Component {
@@ -17,24 +18,24 @@ class App extends Component {
     }));
   }
 
-  accumulateContacts = data => {
+  accumulateContacts = (data) => {
     const test = this.state.contacts.some((user) => isEqual(data, user));
     !test ? this.setState(prevState => ({
       contacts: [data, ...prevState.contacts],
-    })) : window.alert(`${data.name} is already in contacts!` )
+    })) : alert(`${data.name} is already in contacts!` )
   }
 
   handleFilteredItems = (e) => {
     this.setState({filter: e.currentTarget.value})
   }
 
-  // filteredItems = () => {
-  //   const { filter, contacts } = this.state;
-  //   const loweredFilter = filter.toLowerCase();
+  filteredItems = () => {
+    const { filter, contacts } = this.state;
+    const loweredFilter = filter.toLowerCase();
     
-  //   return contacts.filter(elem => elem.name.toLowerCase().includes(loweredFilter));
+    return contacts.filter(elem => elem.name.toLowerCase().includes(loweredFilter));
 
-  // }
+  }
 
   render() {
 
@@ -44,7 +45,9 @@ class App extends Component {
         <ContactForm data={this.accumulateContacts} />
         <h2>Contacts</h2>
         <Filter eventHandler={this.handleFilteredItems} options={this.state.filter}/>
-        <ContactList container={this.state.filter} contacts={this.state.contacts} erase={this.eraseContact}/>  
+        <ContactList>
+          <ContactsItem erase={this.eraseContact} filtered={this.filteredItems}/>
+        </ContactList>
       </div>
     )
   }

@@ -1,41 +1,11 @@
-import { nanoid } from 'nanoid';
 import propTypes from 'prop-types';
 import s from './contactList.module.css';
 
-export default function ContactList({ contacts, container, erase }) {
-  const loweredFilter = container.toLowerCase();
-  const list = (
-    <ul className={s.list__block}>
-      {!container
-        ? contacts.map(elem => {
-            return (
-              <li key={nanoid()} className={s.contacts__item}>
-                {elem.name}: {elem.number}
-                <button type="button" onClick={() => erase(elem.name)}>
-                  Delete
-                </button>
-              </li>
-            );
-          })
-        : contacts
-            .filter(elem => elem.name.toLowerCase().includes(loweredFilter))
-            .map(elem => {
-              return (
-                <li key={nanoid()} className={s.contacts__item}>
-                  {elem.name}: {elem.number}
-                  <button type="button" onClick={() => erase(elem)}>
-                    Delete
-                  </button>
-                </li>
-              );
-            })}
-    </ul>
-  );
+export default function ContactList({ children }) {
+  const list = <ul className={s.list__block}>{children}</ul>;
   return list;
 }
 
 ContactList.propTypes = {
-  contacts: propTypes.array,
-  container: propTypes.string,
-  erase: propTypes.func,
+  children: propTypes.node,
 };
